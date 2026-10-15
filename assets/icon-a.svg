@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FDF2F4"/><stop offset=".55" stop-color="#F3E6EF"/><stop offset="1" stop-color="#E9EEF8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#sky)"/>
+  <ellipse cx="512" cy="868" rx="340" ry="56" fill="#E6EDDC"/>
+  <ellipse cx="512" cy="860" rx="130" ry="22" fill="#D8E2C9"/>
+  <g stroke="#7A5C58" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M512 862 L512 560" stroke-width="62"/>
+    <path d="M512 610 L396 468 M512 600 L636 470 M512 556 L512 402 M506 580 L430 408 M520 575 L600 400" stroke-width="36"/>
+  </g>
+  <g>
+    <circle cx="330" cy="476" r="88" fill="#F4A3BC"/>
+    <circle cx="700" cy="488" r="84" fill="#F4A3BC"/>
+    <circle cx="400" cy="398" r="100" fill="#F7B8CC"/>
+    <circle cx="628" cy="396" r="100" fill="#F7B8CC"/>
+    <circle cx="512" cy="330" r="110" fill="#FFD6E2"/>
+    <circle cx="456" cy="492" r="92" fill="#F7B8CC"/>
+    <circle cx="580" cy="498" r="94" fill="#F4A3BC"/>
+    <circle cx="512" cy="442" r="104" fill="#FFD6E2"/>
+    <circle cx="372" cy="546" r="68" fill="#FFD6E2"/>
+    <circle cx="656" cy="556" r="64" fill="#FFD6E2"/>
+    <circle cx="420" cy="300" r="66" fill="#F4A3BC"/>
+    <circle cx="610" cy="286" r="70" fill="#F4A3BC"/>
+    <!-- highlights -->
+    <circle cx="476" cy="296" r="30" fill="#FFE3EC" opacity=".8"/>
+    <circle cx="372" cy="364" r="24" fill="#FFE3EC" opacity=".7"/>
+    <circle cx="598" cy="364" r="24" fill="#FFE3EC" opacity=".7"/>
+  </g>
+  <!-- one blossom falling -->
+  <circle cx="792" cy="612" r="22" fill="#F4A3BC" opacity=".28"/>
+  <circle cx="806" cy="668" r="28" fill="#F4A3BC" opacity=".55"/>
+  <circle cx="812" cy="736" r="38" fill="#F4A3BC"/>
+  <circle cx="800" cy="724" r="12" fill="#FFE3EC" opacity=".8"/>
+</svg>

@@ -1,0 +1,226 @@
+/* Memory Tree landing page.
+   Tokens are copied verbatim from prototype/styles.css; no new colours. */
+:root {
+  --sky-top: #FDF2F4;
+  --sky-mid: #F3E6EF;
+  --sky-bot: #E9EEF8;
+  --blossom: #F7B8CC;
+  --blossom-2: #F4A3BC;
+  --blossom-hi: #FFE3EC;
+  --trunk: #7A5C58;
+  --ground: #E6EDDC;
+  --ink: #3A2E33;
+  --ink-2: #8A7A80;
+  --ink-3: #C9BDC2;
+  --accent: #D96C8A;
+  --surface: #FFF9F7;
+  --scrim: rgba(58, 46, 51, 0.35);
+  --hair: rgba(255, 255, 255, 0.6);
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --serif: "New York", ui-serif, "Iowan Old Style", "Palatino", "Book Antiqua", Georgia, serif;
+  --r-sheet: 28px;
+  --r-card: 24px;
+  --r-tile: 16px;
+  --material: rgba(255, 255, 255, 0.6);
+  --shadow-soft: 0 24px 60px rgba(58, 46, 51, 0.14);
+  --max: 1100px;
+  --gutter: 24px;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+html, body { margin: 0; }
+body {
+  font-family: var(--font);
+  font-size: 17px; line-height: 1.5;
+  color: var(--ink);
+  background: var(--surface);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img { display: block; max-width: 100%; height: auto; }
+h1, h2, p, figure { margin: 0; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+a { color: inherit; -webkit-tap-highlight-color: transparent; }
+
+/* Press feedback lives on pointer-down (:active), instant. */
+button, .badge, .text-link { transition: transform 100ms ease-out; }
+button:active, .badge:active { transform: scale(0.97); }
+
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 10px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.skip { position: absolute; left: 12px; top: 12px; translate: 0 -200%; opacity: 0; z-index: 100; padding: 10px 16px; border-radius: 20px; background: var(--surface); color: var(--ink); font-weight: 600; text-decoration: none; box-shadow: var(--shadow-soft); }
+.skip:focus { translate: 0 0; opacity: 1; }
+
+/* ---------- Type: size-specific tracking (tight as it grows) ---------- */
+.display-xl { font-size: clamp(40px, 6.4vw, 72px); line-height: 1.04; letter-spacing: -0.035em; font-weight: 700; }
+.display { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700; }
+.lede { font-size: clamp(19px, 2vw, 22px); line-height: 1.42; letter-spacing: -0.012em; font-weight: 400; }
+.body-lg { font-size: 19px; line-height: 1.5; letter-spacing: -0.006em; }
+.caption { font-size: 14px; line-height: 20px; letter-spacing: 0.005em; }
+.eyebrow { font-size: 12px; line-height: 16px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
+
+.text-link { font-weight: 500; text-decoration: underline; text-decoration-color: var(--blossom-2); text-decoration-thickness: 2px; text-underline-offset: 4px; display: inline-block; }
+.text-link:hover { text-decoration-color: var(--accent); }
+.text-link.strong { font-weight: 600; }
+
+/* ---------- Materials ---------- */
+.material {
+  background: var(--material);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: inset 0 1px 0 var(--hair), 0 1px 2px rgba(58, 46, 51, 0.06);
+}
+
+/* ---------- Nav ---------- */
+.nav { position: sticky; top: 0; z-index: 50; }
+.nav.material { box-shadow: inset 0 -1px 0 rgba(58, 46, 51, 0.05); }
+.nav-in { max-width: calc(var(--max) + 2 * var(--gutter)); margin: 0 auto; height: 60px; padding: 0 var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: block; border-radius: 8px; text-decoration: none; }
+/* Wordmark rebuilt in HTML (the SVG version depends on New York metrics, so the
+   blossom drifts over the "m" in browsers without that font). Blossom = the "o". */
+.wordmark { display: inline-flex; align-items: baseline; font: 500 25px/1 var(--serif); letter-spacing: -0.02em; color: var(--ink); white-space: pre; }
+.wordmark img { display: inline-block; width: 0.8em; height: 0.8em; margin: 0 0.02em 0 0.04em; align-self: center; translate: 0 0.06em; }
+.wordmark-foot { font-size: 22px; }
+.nav-links { display: flex; align-items: center; gap: 20px; font-size: 15px; }
+.badge { display: inline-block; border-radius: 9px; flex: none; }
+.badge-sm img { width: 105px; height: auto; }
+.badge-lg img { width: 150px; height: auto; }
+
+/* ---------- Hero ---------- */
+.hero {
+  margin-top: -60px; /* sit under the translucent bar */
+  padding: 112px var(--gutter) 40px;
+  background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 46%, var(--sky-bot) 86%, var(--surface) 100%);
+  text-align: center;
+}
+.hero-copy { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.hero-copy .lede { max-width: 34em; text-wrap: balance; }
+.hero-copy .badge { margin-top: 8px; }
+
+.stage {
+  position: relative; max-width: var(--max); margin: 12px auto 0;
+  height: 60vh; min-height: 420px; max-height: 680px;
+  cursor: pointer; isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+}
+.tree-static, .tree-canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.tree-canvas { opacity: 0; transition: opacity 400ms ease; }
+.stage.live .tree-canvas { opacity: 1; }
+.stage.live .tree-static { opacity: 0; transition: opacity 400ms ease; }
+
+.shake-pill {
+  position: absolute; left: 50%; bottom: 8px; translate: -50% 0; z-index: 5;
+  height: 44px; padding: 0 18px 0 14px; border-radius: 22px;
+  display: inline-flex; align-items: center; gap: 9px;
+  font-size: 15px; font-weight: 600; letter-spacing: -0.005em; color: var(--ink);
+}
+.leaf-dot { width: 12px; height: 12px; border-radius: 50%; flex: none; background: radial-gradient(circle at 35% 35%, var(--blossom-hi), var(--blossom-2)); box-shadow: 0 1px 2px rgba(217, 108, 138, 0.35); }
+
+/* Memory card: same look as the prototype card */
+.memcard {
+  position: absolute; z-index: 6; width: min(340px, calc(100% - 16px));
+  left: 0; top: 0;
+  background: var(--surface); border-radius: var(--r-card); padding: 20px 22px 18px;
+  box-shadow: 0 24px 60px rgba(58, 46, 51, 0.24), inset 0 1px 0 #fff;
+  text-align: left; cursor: pointer;
+  transform-origin: 50% 100%;
+  will-change: transform, opacity;
+}
+.memcard[hidden] { display: none; }
+.memcard .eyebrow { margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.memcard .close { width: 28px; height: 28px; border-radius: 14px; background: rgba(58, 46, 51, 0.06); display: inline-flex; align-items: center; justify-content: center; flex: none; position: relative; }
+.memcard .close::after { content: ""; position: absolute; inset: -8px; } /* 44px hit target */
+.memcard .close svg { width: 12px; height: 12px; }
+.card-text { font: 400 20px/30px var(--serif); letter-spacing: -0.005em; }
+.card-ago { margin-top: 10px; font-size: 13px; line-height: 18px; display: flex; align-items: center; gap: 8px; }
+.card-ago .leaf-dot { width: 8px; height: 8px; }
+
+/* ---------- Moments ---------- */
+.moments { max-width: calc(var(--max) + 2 * var(--gutter)); margin: 0 auto; padding: 120px var(--gutter) 40px; display: flex; flex-direction: column; gap: 140px; }
+.moment { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 72px; }
+.moment.flip .moment-media { order: 2; }
+.moment-media { display: flex; justify-content: center; }
+.moment-copy { display: flex; flex-direction: column; gap: 14px; max-width: 440px; }
+.moment.flip .moment-copy { justify-self: end; }
+
+/* CSS device frame: rounded rect, dark bezel, Dynamic Island */
+.device {
+  position: relative; width: 280px; flex: none;
+  aspect-ratio: 603 / 1311;
+  border-radius: 46px; padding: 9px;
+  background: #1A1416;
+  box-shadow: 0 0 0 1.5px #3b3133, var(--shadow-soft), 0 6px 16px rgba(58, 46, 51, 0.08);
+}
+.device img { width: 100%; height: 100%; border-radius: 37px; object-fit: cover; background: var(--sky-mid); }
+/* Island geometry measured from 01-home.png (x 429–776, y 42–151 of 1206×2622) so it
+   lines up exactly with the island already drawn into some screenshots. */
+.island { position: absolute; left: 50%; translate: -50% 0; top: calc(9px + (100% - 18px) * 0.016); width: calc((100% - 18px) * 0.2886); height: auto; aspect-ratio: 348 / 110; border-radius: 999px; background: #0B0809; }
+
+.pair { position: relative; display: flex; justify-content: center; }
+.pair .device { width: 250px; }
+.pair .device-front { margin-left: -70px; margin-top: 70px; }
+.pair .device:first-child { margin-top: 0; rotate: -3deg; }
+.pair .device-front { rotate: 3deg; z-index: 1; } /* the memory card sits in front */
+
+/* ---------- Privacy band ---------- */
+.privacy { padding: 120px var(--gutter); }
+.privacy-in {
+  max-width: var(--max); margin: 0 auto; padding: 72px 32px;
+  border-radius: var(--r-sheet);
+  background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 52%, var(--sky-bot) 100%);
+  text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px;
+}
+.privacy-in .body-lg { max-width: 30em; }
+.privacy-mark { width: 56px; height: 56px; margin-bottom: 4px; }
+
+/* ---------- Closing ---------- */
+.closing { padding: 40px var(--gutter) 120px; }
+.closing-in { max-width: 640px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.closing-icon { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 12px 32px rgba(58, 46, 51, 0.14); margin-bottom: 8px; }
+
+/* ---------- Footer ---------- */
+.footer { border-top: 1px solid rgba(58, 46, 51, 0.08); }
+.footer-in { max-width: calc(var(--max) + 2 * var(--gutter)); margin: 0 auto; padding: 36px var(--gutter) 48px; display: flex; align-items: center; justify-content: space-between; gap: 20px 32px; flex-wrap: wrap; }
+.footer-links { list-style: none; margin: 0; padding: 0; display: flex; gap: 8px 24px; flex-wrap: wrap; font-size: 15px; }
+
+/* ---------- Reveal-on-scroll initial state (only when JS can reveal it) ---------- */
+@media (scripting: enabled) {
+  .reveal { opacity: 0; transform: translateY(14px); }
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 760px) {
+  .nav-in { height: 56px; }
+  .wordmark { font-size: 22px; }
+  .nav-links { gap: 14px; }
+  .badge-sm img { width: 90px; }
+  .hero { margin-top: -56px; padding-top: 104px; }
+  .stage { height: 55vh; min-height: 380px; margin-top: 20px; }
+  .moments { padding-top: 88px; gap: 96px; }
+  .moment, .moment.flip { grid-template-columns: 1fr; gap: 36px; }
+  .moment.flip .moment-media { order: 0; }
+  .moment-copy, .moment.flip .moment-copy { justify-self: start; max-width: none; }
+  .device { width: min(250px, 66vw); border-radius: 40px; padding: 8px; }
+  .device img { border-radius: 32px; }
+  .island { top: calc(8px + (100% - 16px) * 0.016); width: calc((100% - 16px) * 0.2886); }
+  .pair .device { width: min(200px, 48vw); }
+  .pair .device-front { margin-left: -48px; margin-top: 56px; }
+  .privacy { padding: 88px var(--gutter); }
+  .privacy-in { padding: 56px 24px; }
+  .closing { padding-bottom: 88px; }
+  .footer-in { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 380px) {
+  .nav-links .text-link { display: none; } /* Support stays in the footer */
+}
+
+/* ---------- Reduced motion & transparency ---------- */
+@media (prefers-reduced-motion: reduce) {
+  button, .badge, .text-link { transition: none; }
+  .tree-canvas, .stage.live .tree-static { transition: opacity 200ms ease; }
+  .pair .device, .pair .device-front { rotate: 0deg; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .material { background: var(--surface); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
